@@ -14,7 +14,7 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
-      <RatingCard averageRating={5} />
+      <RatingCard averageRating={4.6} />
     </Container>
   );
 }

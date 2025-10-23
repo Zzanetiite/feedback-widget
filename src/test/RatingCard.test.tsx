@@ -18,6 +18,11 @@ describe('RatingCard', () => {
     expect(screen.getByText('EXCELLENT')).toBeInTheDocument();
   });
 
+  it('renders rating stars successfully', () => {
+    renderWithTheme(<RatingCard {...testRatingProps} />);
+    expect(screen.getByRole('img', { name: /rating: 4\.6 out of 5 stars/i })).toBeInTheDocument();
+  });
+
   it('renders average rating successfully', () => {
     renderWithTheme(<RatingCard {...testRatingProps} />);
     expect(screen.getByText(/4\.6 out of 5/i)).toBeInTheDocument();

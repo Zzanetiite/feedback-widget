@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { AverageRatingStars } from './AverageRatingStars';
 
 export interface RatingCardProps {
   title?: string;
@@ -57,6 +58,7 @@ export const RatingCard: React.FC<RatingCardProps> = ({ title = 'EXCELLENT', ave
   return (
     <CardContainer role="region" aria-label="Product rating summary">
       <Title>{title}</Title>
+      <AverageRatingStars rating={averageRating} />
       <RatingScore aria-label={`Average rating: ${averageRating} out of 5`}>
         {averageRating.toFixed(1)} OUT OF 5
       </RatingScore>
