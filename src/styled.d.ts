@@ -9,6 +9,7 @@ declare module 'styled-components' {
       background: string;
       surface: string;
       border: string;
+      error: string;
       text: {
         primary: string;
         secondary: string;

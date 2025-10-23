@@ -3,9 +3,18 @@ import { screen } from '@testing-library/react';
 import { RatingCard } from '../components/RatingCard';
 import { renderWithTheme } from './utils';
 
+const testRatingData = [
+  { stars: 5, count: 952 },
+  { stars: 4, count: 171 },
+  { stars: 3, count: 55 },
+  { stars: 2, count: 14 },
+  { stars: 1, count: 40 },
+];
+
 const testRatingProps = {
   averageRating: 4.6,
   totalRatings: 1232,
+  ratingData: testRatingData,
 };
 
 describe('RatingCard', () => {
@@ -31,5 +40,10 @@ describe('RatingCard', () => {
   it('renders logo text successfully', () => {
     renderWithTheme(<RatingCard {...testRatingProps} />);
     expect(screen.getByText(/Product Rating LOGO/i)).toBeInTheDocument();
+  });
+
+  it('renders rating breakdown successfully', () => {
+    renderWithTheme(<RatingCard {...testRatingProps} />);
+    expect(screen.getByRole('list', { name: /rating breakdown/i })).toBeInTheDocument();
   });
 });

@@ -6,7 +6,7 @@ This project contains a feedback widget built according to given instructions. T
 
 ## Out of scope
 
-* The widget uses a simple star instead of a styled star because the star in the instructions is a bespoke component.
+* The widget uses simple stars instead of styled stars because the star in the instructions is a bespoke component.
 * Brand logo – excluded for confidentiality.
 
 ## Running the project

@@ -1,9 +1,17 @@
 import styled from 'styled-components';
 import { AverageRatingStars } from './AverageRatingStars';
+import { RatingBreakdown } from './RatingBreakdown';
 
 export interface RatingCardProps {
   title?: string;
   averageRating: number;
+  totalRatings: number;
+  ratingData: RatingData[];
+}
+
+export interface RatingData {
+  stars: number;
+  count: number;
 }
 
 const CardContainer = styled.div`
@@ -12,6 +20,7 @@ const CardContainer = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border};
   padding: clamp(1.5rem, 4vw, 2.5rem);
   max-width: 450px;
+  min-width: 150px;
   width: 100%;
   box-sizing: border-box;
 
@@ -23,11 +32,11 @@ const CardContainer = styled.div`
 
 const Title = styled.h1`
   font-family: ${({ theme }) => theme.fonts.main};
-  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-size: clamp(1rem, 5vw, 1.5rem);
   font-weight: 600;
   text-align: center;
   color: ${({ theme }) => theme.colors.text.primary};
-  letter-spacing: 0.1em;
+  letter-spacing: clamp(0.05em, 1vw, 0.1em); // reduce on tiny screens
   margin: 0 0 1.5rem 0;
 `;
 
@@ -54,7 +63,12 @@ const ProductRatingLabel = styled.div`
   gap: 0.5rem;
 `;
 
-export const RatingCard: React.FC<RatingCardProps> = ({ title = 'EXCELLENT', averageRating }) => {
+export const RatingCard: React.FC<RatingCardProps> = ({
+  title = 'EXCELLENT',
+  averageRating,
+  totalRatings,
+  ratingData,
+}) => {
   return (
     <CardContainer role="region" aria-label="Product rating summary">
       <Title>{title}</Title>
@@ -63,6 +77,7 @@ export const RatingCard: React.FC<RatingCardProps> = ({ title = 'EXCELLENT', ave
         {averageRating.toFixed(1)} OUT OF 5
       </RatingScore>
       <ProductRatingLabel>Product Rating LOGO</ProductRatingLabel>
+      <RatingBreakdown ratings={ratingData} totalRatings={totalRatings} />
     </CardContainer>
   );
 };

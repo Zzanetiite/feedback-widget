@@ -74,7 +74,7 @@ export const AverageRatingStars: React.FC<StarRatingProps> = ({ rating, maxStars
 
   const ariaLabel = isValidRating
     ? `Average rating: ${safeRating.toFixed(1)} out of ${safeMaxStars} stars`
-    : "An error has occurred. Couldn't determine rating.";
+    : 'An error has occurred. Could not determine rating.';
 
   return (
     <StarContainer role="img" aria-label={ariaLabel}>

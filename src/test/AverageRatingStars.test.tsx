@@ -69,7 +69,7 @@ describe('AverageRatingStars', () => {
     expect(emptyStars.length).toBe(1);
 
     const failureAriaText = screen.getByRole('img', {
-      name: /An error has occurred. Couldn't determine rating./i,
+      name: /An error has occurred. Could not determine rating./i,
     });
     expect(failureAriaText).toBeInTheDocument();
   });
